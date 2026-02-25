@@ -1,0 +1,196 @@
+export const products = [
+  {
+    id: 'FF-01',
+    name: 'STATIC',
+    tagline: 'Charged air.',
+    description: [
+      'The Japanese call it 予感 — yokan — a premonition felt not in the mind but in the body. The hair on your arms lifting. A change in pressure you register before you understand.',
+      'The sky has turned a color that doesn\'t photograph well. The air tastes metallic. Somewhere, a transformer hums at a frequency that makes birds leave. Nothing has happened yet, and that is precisely the point — STATIC is the last moment of before. Sharp ozone, mineral dust, graphite, and the particular silence of an atmosphere deciding what comes next.',
+      'Volatile. Imminent. Still.',
+    ],
+    notes: {
+      top: 'Ozone, metallic aldehydes, cold ionized air',
+      middle: 'Mineral dust, steel shavings, paper static, storm mist',
+      base: 'Graphite, vetiver root, dry amber, industrial clean musk',
+    },
+    color: '#6B4C7D',
+    swatch: '/swatches/static.png',
+    price: 90,
+    variants: [
+      { size: '50ml', price: 90 },
+      { size: '150ml', price: 160 },
+    ],
+  },
+  {
+    id: 'FF-02',
+    name: 'REWILD',
+    tagline: 'Earth reclaimed by uncontrolled growth',
+    description: [
+      'You step out onto a train platform that hasn\'t seen a commuter in years. The crosswalk is soft underfoot — moss has filled the gaps between every tile. Vines hang from the awnings like curtains drawn shut. There are no bodies. No wreckage. Just the quiet fact that everything kept growing after everyone stopped showing up.',
+      'You don\'t know how long you were gone. Long enough for the trees to split the median. Long enough for ferns to colonize the escalators. The air is thick and green — chlorophyll, wet stone, the mineral sweetness of concrete slowly returning to soil.',
+      'Damp earth and crushed leaves on your skin. The green, living weight of a world that doesn\'t need you anymore.',
+    ],
+    notes: {
+      top: 'Crushed ivy leaf, chlorophyll burst, rainwater',
+      middle: 'Moss, fern spores, vine sap, wet stone',
+      base: 'Damp earth, patchouli humus, mineral soil musk',
+    },
+    color: '#4A5D45',
+    swatch: '/swatches/rewild.png',
+    price: 90,
+    variants: [
+      { size: '50ml', price: 90 },
+      { size: '150ml', price: 160 },
+    ],
+  },
+  {
+    id: 'FF-03',
+    name: 'BRINE',
+    tagline: 'Saltwater meets infrastructure',
+    description: [
+      'The pier is still there. You can see it if the water is clear enough — the boardwalk planks, the ticket booth, a Ferris wheel frozen mid-rotation thirty feet below the surface. Further out, the upper floors of a high-rise break the waterline like a reef. Fish move through the conference rooms.',
+      'Cold ocean pressing against steel and glass — mineral, metallic, sharp. Salt crystallizes on rebar. Iodine settles on rust. The buildings have become reefs, their hallways colonized by currents, their lobbies silted over and strange. Every drowned city imagines itself as Atlantis. This one doesn\'t have to imagine.',
+      'Salt on cold steel. The mineral sting of deep water against everything it was never supposed to touch.',
+    ],
+    notes: {
+      top: 'Bitter grapefruit peel, sea spray, iodine accord',
+      middle: 'Algae skin, wet rope, mineral brine, metallic marine florals',
+      base: 'Ambergris, driftwood, saline musk, faint smoke',
+    },
+    color: '#2B4C5D',
+    swatch: '/swatches/brine.png',
+    price: 90,
+    variants: [
+      { size: '50ml', price: 90 },
+      { size: '150ml', price: 160 },
+    ],
+  },
+  {
+    id: 'FF-04',
+    name: 'STEAM',
+    tagline: 'Where concrete meets condensation.',
+    description: [
+      'If STATIC is the held breath, STEAM is the exhale. The systems that kept a city alive — the pipes, the turbines, the pressure valves buried beneath six lanes of traffic — are winding down. Not failing. Just finishing. The boilers have nothing left to heat. The generators have no one left to power. And so the infrastructure exhales, one long and final breath, up through the grates and into the empty streets.',
+      'It smells like warm metal and wet concrete and laundered cotton that no one will ever fold. Something ancient and mineral rising through the skeleton of something modern and done — clean heat, softened water, the memory of pressure dissolving into open air.',
+      'Warm vapor on bare skin. The quiet, clean heat of a city breathing out for the last time.',
+    ],
+    notes: {
+      top: 'Vapor accord, hot mineral water, misted linen',
+      middle: 'Heated metal pipes, damp concrete, iron steam',
+      base: 'Warm cedar vapor, tonka warmth, soft skin musk',
+    },
+    color: '#A8A8A8',
+    swatch: '/swatches/steam.png',
+    price: 90,
+    variants: [
+      { size: '50ml', price: 90 },
+      { size: '150ml', price: 160 },
+    ],
+  },
+  {
+    id: 'FF-05',
+    name: 'OCTANE',
+    tagline: 'The fossil-fuel age, distilled',
+    description: [
+      'The engines aren\'t running. They haven\'t run in a long time. But the factory floor still holds everything that was left behind — drums of motor oil with rusted seams, cracked leather seats stacked against a wall, fuel lines that softened and split open years ago. A dark, heavy liquid pools in the low spots and catches the light.',
+      'Everything here has thickened. Petroleum oozes like molasses from cracked drums. Leather cures itself against the walls. Machine grease has fossilized in the joints of engines that will never turn again. A heavy chemical warmth has settled into the concrete, the air itself — the residue of an entire era, sealed in amber and slowly cooling.',
+      'Sweet gasoline and worn leather on warm skin. The slow, heavy pull of something that refuses to evaporate.',
+    ],
+    notes: {
+      top: 'Gasoline vapor accord, sharp aldehydes, hot metal flash',
+      middle: 'Motor oil, rubber tire, smoked leather, tar resin',
+      base: 'Burnt woods, dark amber, asphalt musk, vetiver smoke',
+    },
+    color: '#D97736',
+    swatch: '/swatches/octane.png',
+    price: 90,
+    variants: [
+      { size: '50ml', price: 90 },
+      { size: '150ml', price: 160 },
+    ],
+  },
+  {
+    id: 'FF-06',
+    name: 'PLASTIC SUN',
+    tagline: 'Synthetic warmth replacing natural light',
+    description: [
+      'A sedan in a beach parking lot with the windows rolled up. It has been here long enough that the ticket on the dashboard has bleached white. The sunscreen in the cupholder has separated. Two towels in the backseat, still sandy. Whoever parked here walked toward the water and simply kept going.',
+      'Inside, the air is a sealed capsule of one particular afternoon — hot vinyl, warm rubber, the citrus ghost of SPF 50, and the faint sweetness of a dashboard softening past its design temperature. It is not unpleasant. It is tender in the way that abandoned things can be, when the leaving was not violent, just sudden.',
+      'Golden, synthetic warmth. Sunscreen and hot plastic and the amber glow of an afternoon that never ended.',
+    ],
+    notes: {
+      top: 'Hot vinyl accord, aldehydic heat shimmer, sunscreen citrus',
+      middle: 'Warm polymer, rubber, solar-baked dashboard, synthetic florals',
+      base: 'Benzoin resin, golden amber, tonka, soft plastic musk',
+    },
+    color: '#E6C229',
+    swatch: '/swatches/plastic-sun.png',
+    price: 90,
+    variants: [
+      { size: '50ml', price: 90 },
+      { size: '150ml', price: 160 },
+    ],
+  },
+  {
+    id: 'FF-07',
+    name: 'GRAVITY',
+    tagline: 'Sweetness engineered for orbit',
+    description: [
+      'The canned goods went first. Then the freeze-dried meals, the protein bars, the powdered milk. People took what would keep them alive and left behind what wouldn\'t. In the back of a supply depot, behind pallets of the practical and the essential, sits an untouched wall of astronaut ice cream — and when you tear the foil, the air fills with something impossibly sweet: freeze-dried strawberry and cold vanilla and the powdery ghost of milk.',
+      'And now it\'s one of the only sweet things left. Cold, airy, faintly absurd. A food designed for a journey no one is taking anymore, preserved in foil packaging that will outlast everything around it. You open one. It dissolves on your tongue like a memory of sugar.',
+      'Cold sugar on your lips. Powdered milk and air and the pale sweetness of something that was never meant to expire.',
+    ],
+    notes: {
+      top: 'Freeze-dried strawberry dust, cold sugar crystals, frozen air',
+      middle: 'Vanilla foam, powdered milk, airy marshmallow',
+      base: 'Pale woods, soft amber, weightless musk',
+    },
+    color: '#1A1A2E',
+    swatch: '/swatches/gravity.png',
+    price: 90,
+    variants: [
+      { size: '50ml', price: 90 },
+      { size: '150ml', price: 160 },
+    ],
+  },
+  {
+    id: 'FF-08',
+    name: 'AFTERGLOW',
+    tagline: 'Human warmth, preserved',
+    description: [
+      'If GRAVITY is the synthetic sweetness you find at the end, AFTERGLOW is the real thing you lost at the beginning. It is not a fragrance about a place or a material or a ruin. It is the scent of a person — the specific warmth of skin, the smell of someone\'s hair on a pillowcase, the ghost of an embrace that ended hours ago but hasn\'t fully left the room.',
+      'Three molecules. That\'s all. Iso E Super, ambrette, and a bare trace of musk — the minimum required to smell like skin that isn\'t yours. Perfumers would call it a skin scent. Everyone else would call it missing someone.',
+      'Your skin, but warmer. The scent of someone who was just here.',
+    ],
+    notes: {
+      top: 'Iso E Super',
+      middle: 'Ambrette seed',
+      base: 'Skin musk',
+    },
+    color: '#E0A899',
+    swatch: '/swatches/afterglow.png',
+    price: 90,
+    variants: [
+      { size: '50ml', price: 90 },
+      { size: '150ml', price: 160 },
+    ],
+  },
+  {
+    id: 'FF-SET',
+    name: 'DISCOVERY SET',
+    tagline: 'Full Archive',
+    description: [
+      'All eight fragrances. 2ml vials in a custom archival pack. The complete collection, portable.',
+    ],
+    notes: {
+      top: '8 x 2ml vials in archival pack',
+      middle: 'Field booklet included',
+      base: '$10 credit toward any full bottle',
+    },
+    color: '#2A2A2A',
+    price: 50,
+    variants: [
+      { size: 'One Size', price: 50 },
+    ],
+  },
+]
