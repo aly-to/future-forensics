@@ -160,7 +160,7 @@ export const products = [
     color: '#1A1A2E',
     swatch: '/swatches/gravity.png',
     productImage: '/products/gravity.png',
-    hoverImage: '/products/card-gravity.png',
+    hoverImage: '/products/card-afterglow.png',
     price: 90,
     variants: [
       { size: '50ml', price: 90 },
@@ -184,7 +184,7 @@ export const products = [
     color: '#E0A899',
     swatch: '/swatches/afterglow.png',
     productImage: '/products/afterglow.png',
-    hoverImage: '/products/card-afterglow.png',
+    hoverImage: '/products/card-gravity.png',
     price: 90,
     variants: [
       { size: '50ml', price: 90 },
@@ -205,8 +205,8 @@ export const products = [
     },
     color: '#2A2A2A',
     swatch: '/products/discovery-set-12.png',
-    productImage: '/products/discovery-set-11.png',
-    hoverImage: '/products/discovery-set-10.png',
+    productImage: '/products/discovery-set-10.png',
+    hoverImage: '/products/discovery-set-11.png',
     price: 50,
     variants: [
       { size: 'One Size', price: 50 },
