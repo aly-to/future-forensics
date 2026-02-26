@@ -43,13 +43,18 @@ export default function ProductPage() {
           <span>{product.name}</span>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-16">
+        <div className="flex flex-col lg:flex-row gap-16 items-start">
           {/* Image */}
-          <div className="w-full lg:w-1/2 flex items-center justify-center">
-            {product.swatch ? (
-              <img src={product.swatch} alt={product.name} className="w-80 h-80 md:w-96 md:h-96 object-cover bottle-shadow" />
+          <div className="w-full lg:w-1/2 relative group">
+            {product.productImage ? (
+              <img src={product.productImage} alt={product.name} className={`w-full aspect-square object-cover ${product.hoverImage ? 'group-hover:opacity-0' : ''} transition-opacity duration-500`} />
+            ) : product.swatch ? (
+              <img src={product.swatch} alt={product.name} className="w-full aspect-square object-cover" />
             ) : (
-              <div className="w-80 h-80 md:w-96 md:h-96 flex items-center justify-center" style={{ backgroundColor: product.color }} />
+              <div className="w-full aspect-square flex items-center justify-center" style={{ backgroundColor: product.color }} />
+            )}
+            {product.hoverImage && (
+              <img src={product.hoverImage} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             )}
           </div>
 

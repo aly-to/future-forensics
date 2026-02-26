@@ -12,19 +12,18 @@ export default function ArchivePage() {
         <h1 className="text-xl md:text-2xl font-medium tracking-tighter">THE END OF THE WORLD</h1>
         <div className="text-base text-left space-y-6 leading-relaxed border-t border-b border-border py-8" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
           <p>
-            One day, without warning or explanation, people were gone. Not
-            all of them. But enough. No catastrophe, no war, no pandemic — just a quiet and
+            One day, without warning or explanation, people were gone. No catastrophe, no war, no pandemic — just a quiet and
             sudden absence, as if the world blinked and most of its occupants forgot to reappear.
           </p>
           <p>
-            What remained was everything else. The cities kept standing. The oceans kept
-            rising. The factories held their chemicals and the parking lots held their cars.
+            What remained was everything else. The cities kept standing. The factories held
+            their chemicals and the parking lots held their cars.
             Infrastructure ground slowly to a halt, not in crisis but in something closer to
             resignation — systems completing their last cycles, then going still.
           </p>
           <p>
-            And then the earth did what it does. Moss filled the crosswalks. Salt climbed the
-            buildings. The steam that once heated apartments escaped through the grates
+            Then the earth did what it does. Moss filled the crosswalks. Water filled the
+            basements, then the lobbies, then the lower floors. The steam that once heated apartments escaped through the grates
             with no one left to feel it. The world didn't end. It just continued without us, and
             it turned out to be very good at that.
           </p>
@@ -40,7 +39,7 @@ export default function ArchivePage() {
           <p>
             Future Forensics is a speculative fiction project at skin scale: eight imagined sites,
             eight different atmospheres, worn close and experienced in the space between your
-            pulse points. A thought experiment that lives on your wrist.
+            pulse points.
           </p>
         </div>
         <Link
@@ -49,6 +48,20 @@ export default function ArchivePage() {
         >
           Return to Collection
         </Link>
+
+        {/* Credits */}
+        <div className="pt-16 space-y-6">
+          <div className="w-32 mx-auto">
+            <video autoPlay loop muted playsInline className="w-full h-auto">
+              <source src="/ff-logo.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div className="font-mono text-[10px] tracking-wider text-gray-600 uppercase space-y-2">
+            <p>A speculative design project by Alyssa Tohyama</p>
+            <p>Concept, copywriting, visual identity, art direction, and product design</p>
+            <p>Web design created in Claude Code. Images generated with DALL-E.</p>
+          </div>
+        </div>
       </div>
     </div>
   )

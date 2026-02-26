@@ -25,16 +25,9 @@ export default function ShopPage() {
               ) : (
                 <div className="w-32 h-32 relative z-10 group-hover:opacity-0 transition-opacity duration-500" style={{ backgroundColor: p.color }} />
               )}
-              {/* Hover: full swatch background + bottle overlay */}
-              {p.swatch && (
-                <img src={p.swatch} alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              )}
-              {p.swatch && (
-                <img
-                  src="/bottle.png"
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-contain p-8 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-lg"
-                />
+              {/* Hover: full product image background */}
+              {(p.productImage || p.swatch) && (
+                <img src={p.productImage || p.swatch} alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               )}
               <div className="absolute top-4 right-4 font-mono text-xs text-gray-400 z-20">{p.id}</div>
             </div>
@@ -58,8 +51,8 @@ export default function ShopPage() {
         <div className="col-span-1 md:col-span-2">
           <h4 className="font-bold tracking-tight text-lg mb-4">FUTURE FORENSICS</h4>
           <p className="font-mono text-xs text-gray-500 max-w-xs">
-            Olfactory field notes from the quiet earth. Eight atmospheric reconstructions
-            from a world that continued without us.
+            Speculative fragrances for the end of the world — a collection of eight atmospheric
+            reconstructions exploring how air, environment, technology, and humanity may evolve.
           </p>
         </div>
         <div>

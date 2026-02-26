@@ -204,80 +204,90 @@ export default function HomePage() {
           {/* Main Content Split */}
           <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
             {/* Product Image Area */}
-            <div className="w-full lg:w-1/2 p-12 flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-border">
-              {scent.swatch ? (
-                <img src={scent.swatch} alt={scent.name} className="w-64 h-64 md:w-80 md:h-80 object-cover bottle-shadow" />
-              ) : (
-                <div className="relative w-64 h-64 md:w-80 md:h-80 border border-gray-800 bg-white/50 backdrop-blur-sm bottle-shadow flex items-center justify-center">
-                  <div className="absolute inset-0 border border-gray-200 m-2" />
-                  <div className="w-48 h-48 rounded-full border border-gray-300 relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-20" style={{ backgroundColor: scent.color }} />
+            <div className="w-full lg:w-1/2 relative border-b lg:border-b-0 lg:border-r border-border px-6 lg:px-8 pb-6 lg:pb-8 pt-[5rem] lg:pt-[6.25rem] flex items-start justify-center">
+              <div className="w-full aspect-square overflow-hidden relative group">
+                {scent.productImage ? (
+                  <img src={scent.productImage} alt={scent.name} className={`absolute inset-0 w-full h-full object-cover ${scent.hoverImage ? 'group-hover:opacity-0' : ''} transition-opacity duration-500`} />
+                ) : scent.swatch ? (
+                  <img src={scent.swatch} alt={scent.name} className="absolute inset-0 w-full h-full object-cover" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-64 h-64 md:w-80 md:h-80 border border-gray-800 bg-white/50 backdrop-blur-sm bottle-shadow flex items-center justify-center relative">
+                      <div className="absolute inset-0 border border-gray-200 m-2" />
+                      <div className="w-48 h-48 rounded-full border border-gray-300 relative overflow-hidden">
+                        <div className="absolute inset-0 opacity-20" style={{ backgroundColor: scent.color }} />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+                {scent.hoverImage && (
+                  <img src={scent.hoverImage} alt={scent.name} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                )}
+              </div>
             </div>
 
             {/* Product Details Area */}
             <div className="w-full lg:w-1/2 p-8 lg:p-12 overflow-y-auto">
               <div className="text-lg font-light text-gray-400 mb-2" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{scent.id.replace('FF-', '')}</div>
               <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-3" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{scent.name}</h1>
-              <h2 className="text-sm text-gray-400 mb-8 pb-6 border-b border-border-dim">{scent.tagline}</h2>
+              <h2 className="text-sm text-gray-400 pb-8">{scent.tagline}</h2>
+              <div className="-mx-8 lg:-mx-12 border-b border-border" />
 
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  {scent.description.map((para, i) => (
-                    <p key={i} className={`text-base leading-relaxed ${
-                      i === scent.description.length - 1
-                        ? 'text-gray-500 italic'
-                        : 'text-gray-700'
-                    }`} style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{para}</p>
+              <div className="pt-8 space-y-4">
+                {scent.description.map((para, i) => (
+                  <p key={i} className={`text-base leading-relaxed ${
+                    i === scent.description.length - 1
+                      ? 'text-gray-500 italic'
+                      : 'text-gray-700'
+                  }`} style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{para}</p>
+                ))}
+              </div>
+
+              <div className="pt-8">
+                <span className="font-mono text-[10px] tracking-wider text-gray-400 block mb-4 uppercase">
+                  Notes
+                </span>
+                <div className="space-y-3">
+                  <div>
+                    <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">Top</span>
+                    <p className="text-sm text-gray-600 mt-0.5">{scent.notes.top}</p>
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">Middle</span>
+                    <p className="text-sm text-gray-600 mt-0.5">{scent.notes.middle}</p>
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">Base</span>
+                    <p className="text-sm text-gray-600 mt-0.5">{scent.notes.base}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="pt-8" />
+              <div className="-mx-8 lg:-mx-12 border-b border-border" />
+
+              {/* Purchase UI */}
+              <div className="pt-8 space-y-4">
+                <div className="flex gap-3">
+                  {scent.variants.map(v => (
+                    <button
+                      key={v.size}
+                      onClick={() => setActiveSize(v.size)}
+                      className={`flex-1 py-3 px-4 border text-sm transition-all ${
+                        activeSize === v.size
+                          ? 'border-black bg-black text-white'
+                          : 'border-gray-300 text-gray-700 bg-white hover:border-black'
+                      }`}
+                    >
+                      {v.size}
+                    </button>
                   ))}
                 </div>
-
-                <div className="py-6 border-y border-border-dim">
-                  <span className="font-mono text-[10px] tracking-wider text-gray-400 block mb-4 uppercase">
-                    Notes
-                  </span>
-                  <div className="space-y-3">
-                    <div>
-                      <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">Top</span>
-                      <p className="text-sm text-gray-600 mt-0.5">{scent.notes.top}</p>
-                    </div>
-                    <div>
-                      <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">Middle</span>
-                      <p className="text-sm text-gray-600 mt-0.5">{scent.notes.middle}</p>
-                    </div>
-                    <div>
-                      <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">Base</span>
-                      <p className="text-sm text-gray-600 mt-0.5">{scent.notes.base}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Purchase UI */}
-                <div className="space-y-4">
-                  <div className="flex gap-3">
-                    {scent.variants.map(v => (
-                      <button
-                        key={v.size}
-                        onClick={() => setActiveSize(v.size)}
-                        className={`flex-1 py-3 px-4 border text-sm transition-all ${
-                          activeSize === v.size
-                            ? 'border-black bg-black text-white'
-                            : 'border-gray-300 text-gray-700 bg-white hover:border-black'
-                        }`}
-                      >
-                        {v.size}
-                      </button>
-                    ))}
-                  </div>
-                  <button
-                    onClick={handleAddToCart}
-                    className="w-full py-4 bg-dark hover:bg-black text-white text-sm tracking-wide transition-colors flex items-center justify-center"
-                  >
-                    Add to Cart — ${scent.variants.find(v => v.size === activeSize)?.price}
-                  </button>
-                </div>
+                <button
+                  onClick={handleAddToCart}
+                  className="w-full py-4 bg-dark hover:bg-black text-white text-sm tracking-wide transition-colors flex items-center justify-center"
+                >
+                  Add to Cart — ${scent.variants.find(v => v.size === activeSize)?.price}
+                </button>
               </div>
             </div>
           </div>
