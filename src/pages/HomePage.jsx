@@ -26,6 +26,7 @@ export default function HomePage() {
   const [activeSize, setActiveSize] = useState('50ml')
   const [showScroll, setShowScroll] = useState(false)
   const [showButtons, setShowButtons] = useState(false)
+  const [showMobileButtons, setShowMobileButtons] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
   const [indexOpen, setIndexOpen] = useState(false)
   const { addToCart } = useCart()
@@ -83,6 +84,12 @@ export default function HomePage() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Show mobile buttons after 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => setShowMobileButtons(true), 5000)
+    return () => clearTimeout(timer)
+  }, [])
+
   // Show scroll indicator after 5 seconds
   useEffect(() => {
     const timer = setTimeout(() => setShowScroll(true), 5000)
@@ -100,11 +107,11 @@ export default function HomePage() {
 
       {/* ===== HERO SECTION ===== */}
       {/* Mobile hero */}
-      <div className="md:hidden">
+      <div className="md:hidden relative">
         <video autoPlay muted playsInline className="w-full h-auto">
-          <source src="/hero-bg.mp4" type="video/mp4" />
+          <source src="/hero-bg-mobile.mp4" type="video/mp4" />
         </video>
-        <div className={`flex gap-2 justify-center py-5 transition-opacity duration-1000 ${showButtons ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute bottom-6 left-0 right-0 flex gap-2 justify-center transition-opacity duration-1000 ${showMobileButtons ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <a
             href="#collection"
             onClick={(e) => { e.preventDefault(); scrollToCollection(); }}
