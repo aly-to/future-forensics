@@ -9,9 +9,9 @@ export const products = [
       'Volatile. Imminent. Still.',
     ],
     notes: {
-      top: 'Ozone, metallic aldehydes, cold ionized air',
-      middle: 'Mineral dust, steel shavings, paper static, storm mist',
-      base: 'Graphite, vetiver root, dry amber, industrial clean musk',
+      top: 'Ozone, metallic aldehydes, ionized air',
+      middle: 'Mineral dust, steel shavings, paper static, mist',
+      base: 'Graphite, vetiver root, dry amber, clean musk',
     },
     color: '#6B4C7D',
     swatch: '/swatches/static.png',
@@ -28,7 +28,7 @@ export const products = [
     name: 'REWILD',
     tagline: 'Earth reclaimed by uncontrolled growth',
     description: [
-      'A train platform that hasn\'t seen a commuter in years. The crosswalk is soft underfoot — moss has filled the gaps between every tile. Vines hang from the awnings like curtains drawn shut. Everything is overgrown in the gentlest way — not ruined, just unchecked. Left alone long enough to become something new.',
+      'A train platform that hasn\'t seen a commuter in years. The crosswalk is soft underfoot and moss has filled the gaps between every tile. Vines hang from the awnings like curtains drawn shut. Everything is overgrown in the gentlest way — not ruined, just unchecked. Left alone long enough to become something new.',
       'Long enough for the trees to split the median. Long enough for ferns to colonize the escalators. The air is thick and humid — warm stone and wet earth and the faint sweetness of rain still drying on concrete.',
       'Damp earth, wet concrete, rain and urban runoff. The warm, heavy weight of humidity pooling in the quiet.',
     ],
@@ -58,8 +58,8 @@ export const products = [
     ],
     notes: {
       top: 'Bitter grapefruit peel, sea spray, iodine accord',
-      middle: 'Algae skin, wet rope, mineral brine, metallic marine florals',
-      base: 'Ambergris, driftwood, saline musk, faint smoke',
+      middle: 'Algae skin, wet rope, mineral brine, marine florals',
+      base: 'Ambergris, driftwood, saline musk, smoke',
     },
     color: '#2B4C5D',
     swatch: '/swatches/brine.png',
@@ -83,7 +83,7 @@ export const products = [
     notes: {
       top: 'Vapor accord, hot mineral water, misted linen',
       middle: 'Heated metal pipes, damp concrete, iron steam',
-      base: 'Warm cedar vapor, tonka warmth, soft skin musk',
+      base: 'Warm cedar vapor, sandalwood, soft skin musk',
     },
     color: '#A8A8A8',
     swatch: '/swatches/steam.png',
@@ -105,7 +105,7 @@ export const products = [
       'Sweet gasoline and worn leather on warm skin. The sticky pull of something that refuses to evaporate.',
     ],
     notes: {
-      top: 'Gasoline vapor accord, sharp aldehydes, hot metal flash',
+      top: 'Gasoline vapor accord, sharp aldehydes, birch tar',
       middle: 'Motor oil, rubber tire, smoked leather, tar resin',
       base: 'Burnt woods, dark amber, asphalt musk, vetiver smoke',
     },
@@ -129,9 +129,9 @@ export const products = [
       'Golden, synthetic warmth. Sunscreen and hot plastic and the amber glow of an afternoon that never ended.',
     ],
     notes: {
-      top: 'Hot vinyl accord, aldehydic heat shimmer, sunscreen citrus',
-      middle: 'Warm polymer, rubber, solar-baked dashboard, synthetic florals',
-      base: 'Benzoin resin, golden amber, tonka, soft plastic musk',
+      top: 'Hot vinyl accord, warm coconut, sunscreen citrus',
+      middle: 'Warm polymer, rubber, heated vinyl, synthetic florals',
+      base: 'Benzoin resin, golden amber, tonka',
     },
     color: '#E6C229',
     swatch: '/swatches/plastic-sun.png',
