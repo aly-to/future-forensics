@@ -16,9 +16,11 @@ export default function HomePage() {
   const [showScroll, setShowScroll] = useState(false)
   const [showButtons, setShowButtons] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
+  const [indexOpen, setIndexOpen] = useState(false)
   const { addToCart } = useCart()
   const navigate = useNavigate()
   const collectionRef = useRef(null)
+  const detailsRef = useRef(null)
 
   // Scroll to collection if navigated with hash or from another page
   useEffect(() => {
@@ -51,6 +53,7 @@ export default function HomePage() {
     setCurrentIndex(index)
     const p = fragrances[index]
     setActiveSize(p.id === 'FF-SET' ? 'One Size' : '50ml')
+    if (window.innerWidth < 768) setIndexOpen(false)
   }
 
   function handleAddToCart() {
@@ -85,7 +88,36 @@ export default function HomePage() {
       )}
 
       {/* ===== HERO SECTION ===== */}
-      <div className="min-h-full relative">
+      {/* Mobile hero */}
+      <div className="md:hidden">
+        <video autoPlay muted playsInline className="w-full h-auto">
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <div className={`flex gap-2 justify-center py-5 transition-opacity duration-1000 ${showButtons ? 'opacity-100' : 'opacity-0'}`}>
+          <a
+            href="#collection"
+            onClick={(e) => { e.preventDefault(); scrollToCollection(); }}
+            className="py-1.5 px-4 bg-white text-graphite border border-graphite text-[10px] tracking-wide transition-all"
+          >
+            Explore
+          </a>
+          <Link
+            to="/archive"
+            className="py-1.5 px-4 bg-white text-graphite border border-graphite text-[10px] tracking-wide transition-all"
+          >
+            About
+          </Link>
+          <Link
+            to="/shop"
+            className="py-1.5 px-4 bg-white text-graphite border border-graphite text-[10px] tracking-wide transition-all"
+          >
+            Shop All
+          </Link>
+        </div>
+      </div>
+
+      {/* Desktop hero */}
+      <div className="hidden md:block min-h-full relative overflow-hidden">
         <video
           autoPlay
           muted
@@ -95,7 +127,6 @@ export default function HomePage() {
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
 
-        {/* Navigation buttons — right side */}
         <div className={`absolute right-[23%] z-10 flex gap-4 transition-opacity duration-1000 ${showButtons ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} style={{ bottom: 'calc(34% - 48px)' }}>
           <a
             href="#collection"
@@ -112,7 +143,6 @@ export default function HomePage() {
           </Link>
         </div>
 
-        {/* Scroll indicator — appears after 5s */}
         <button
           onClick={scrollToCollection}
           className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 transition-opacity duration-700 ${
@@ -127,9 +157,78 @@ export default function HomePage() {
       </div>
 
       {/* ===== COLLECTION SECTION ===== */}
-      <div ref={collectionRef} id="collection" className="h-screen border-t border-border flex flex-col md:flex-row">
-        {/* Left Index */}
-        <div className="w-full md:w-1/3 lg:w-1/4 border-r border-border overflow-y-auto bg-bone-light hide-scrollbar shrink-0">
+      <div ref={collectionRef} id="collection" className="min-h-screen md:h-screen border-t border-border flex flex-col md:flex-row relative">
+
+        {/* Mobile: slide-out index drawer */}
+        {indexOpen && (
+          <div className="md:hidden fixed inset-0 z-40" onClick={() => setIndexOpen(false)}>
+            <div className="absolute inset-0 bg-black/20" />
+          </div>
+        )}
+        <div className={`md:hidden fixed top-0 left-0 h-full w-72 bg-bone-light border-r border-border z-50 transform transition-transform duration-300 ease-in-out overflow-y-auto hide-scrollbar ${indexOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+          <div className="p-5 border-b border-border flex items-center justify-between sticky top-0 bg-bone-light z-10">
+            <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">Collection Index</span>
+            <button onClick={() => setIndexOpen(false)} className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">Close</button>
+          </div>
+          <div className="pt-2">
+            {fragrances.map((p, idx) => (
+              <button
+                key={p.id}
+                onClick={() => selectScent(idx)}
+                className={`w-full text-left border-b border-border transition-all duration-200 group relative ${
+                  idx === currentIndex ? 'bg-white' : ''
+                }`}
+              >
+                <div className="px-5 py-4">
+                  <div className="flex items-baseline gap-4 pr-3">
+                    <span className="font-mono text-sm text-gray-400 shrink-0">0{idx + 1}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-medium tracking-wide">{p.name}</div>
+                      <div className={`text-[10px] text-gray-400 mt-0.5 ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}>
+                        {p.tagline}
+                      </div>
+                    </div>
+                    {p.swatch ? (
+                      <img src={p.swatch} alt={p.name} className="w-3.5 h-3.5 object-cover shrink-0" />
+                    ) : (
+                      <div className="w-3.5 h-3.5 shrink-0" style={{ backgroundColor: p.color }} />
+                    )}
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={() => { setIndexOpen(false); navigate('/shop'); }}
+            className="w-full text-left border-b border-border hover:opacity-60 transition-opacity group"
+          >
+            <div className="px-5 py-3">
+              <div className="flex items-baseline gap-4 pr-3">
+                <span className="font-mono text-sm text-gray-400 shrink-0 invisible">00</span>
+                <div className="flex-1 min-w-0">
+                  <span className="text-xs uppercase tracking-[0.15em]">View All</span>
+                </div>
+                <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        {/* Mobile: index trigger bar */}
+        <button
+          onClick={() => setIndexOpen(true)}
+          className="md:hidden w-full py-3 border-b border-border bg-bone-light font-mono text-[10px] tracking-wider text-gray-400 uppercase flex items-center justify-center gap-2"
+        >
+          {scent.name} — Tap to browse
+          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+
+        {/* Desktop: Left Index (unchanged) */}
+        <div className="hidden md:block md:w-1/3 lg:w-1/4 border-r border-border overflow-y-auto bg-bone-light hide-scrollbar shrink-0">
           <div className="p-6 border-b border-border font-mono text-[10px] tracking-wider text-gray-400 sticky top-0 bg-bone-light z-10 uppercase">
             Collection Index
           </div>
@@ -140,7 +239,7 @@ export default function HomePage() {
                 onClick={() => selectScent(idx)}
                 className={`w-full text-left border-b border-border hover:bg-white transition-all duration-200 group relative ${
                   idx === currentIndex
-                    ? 'bg-white md:translate-x-3 md:shadow-[4px_0_12px_rgba(0,0,0,0.06)] md:border-l-2 md:border-l-black z-10'
+                    ? 'bg-white translate-x-3 shadow-[4px_0_12px_rgba(0,0,0,0.06)] border-l-2 border-l-black z-10'
                     : ''
                 }`}
               >
@@ -190,9 +289,9 @@ export default function HomePage() {
         </div>
 
         {/* Right Dossier */}
-        <div key={scent.id} className="flex-1 relative overflow-hidden bg-bone flex flex-col h-full fade-in">
+        <div key={scent.id} className="flex-1 relative bg-bone flex flex-col h-full fade-in overflow-y-auto">
           {/* Top Detail Bar */}
-          <div className="h-12 border-b border-border-dim flex items-center px-8 justify-between shrink-0">
+          <div className="h-12 border-b border-border-dim flex items-center px-8 justify-between shrink-0 sticky top-0 bg-bone z-10">
             <div className="font-mono text-[10px] tracking-wider text-gray-400">{scent.id}</div>
             {scent.swatch ? (
               <img src={scent.swatch} alt={scent.name} className="w-4 h-4 object-cover" />
@@ -202,9 +301,9 @@ export default function HomePage() {
           </div>
 
           {/* Main Content Split */}
-          <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+          <div className="flex flex-col lg:flex-row">
             {/* Product Image Area */}
-            <div className="w-full lg:w-1/2 relative border-b lg:border-b-0 lg:border-r border-border px-6 lg:px-8 pb-6 lg:pb-8 pt-[5rem] lg:pt-[6.25rem] flex items-start justify-center">
+            <div className="w-full lg:w-1/2 relative border-b lg:border-b-0 lg:border-r border-border px-6 lg:px-8 pb-6 lg:pb-8 pt-6 lg:pt-[3.25rem] flex items-start justify-center lg:sticky lg:top-12 lg:h-[calc(100vh-3rem-48px)]">
               <div className="w-full aspect-square overflow-hidden relative group">
                 {scent.productImage ? (
                   <img src={scent.productImage} alt={scent.name} className={`absolute inset-0 w-full h-full object-cover ${scent.hoverImage ? 'group-hover:opacity-0' : ''} transition-opacity duration-500`} />
@@ -227,11 +326,11 @@ export default function HomePage() {
             </div>
 
             {/* Product Details Area */}
-            <div className="w-full lg:w-1/2 p-8 lg:p-12 overflow-y-auto">
+            <div className="w-full lg:w-1/2 p-5 md:p-8 lg:p-12">
               <div className="text-lg font-light text-gray-400 mb-2" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{scent.id.replace('FF-', '')}</div>
-              <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-3" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{scent.name}</h1>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight mb-3" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{scent.name}</h1>
               <h2 className="text-sm text-gray-400 pb-8">{scent.tagline}</h2>
-              <div className="-mx-8 lg:-mx-12 border-b border-border" />
+              <div className="-mx-5 md:-mx-8 lg:-mx-12 border-b border-border" />
 
               <div className="pt-8 space-y-4">
                 {scent.description.map((para, i) => (
@@ -263,7 +362,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="pt-8" />
-              <div className="-mx-8 lg:-mx-12 border-b border-border" />
+              <div className="-mx-5 md:-mx-8 lg:-mx-12 border-b border-border" />
 
               {/* Purchase UI */}
               <div className="pt-8 space-y-4">
@@ -288,6 +387,21 @@ export default function HomePage() {
                 >
                   Add to Cart — ${scent.variants.find(v => v.size === activeSize)?.price}
                 </button>
+              </div>
+
+              {/* Mobile: browse collection bar */}
+              <div className="md:hidden pt-8">
+                <div className="-mx-5 border-b border-border" />
+                <button
+                  onClick={() => setIndexOpen(true)}
+                  className="w-full py-3 font-mono text-[10px] tracking-wider text-gray-400 uppercase flex items-center justify-center gap-2"
+                >
+                  Browse Collection
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  </svg>
+                </button>
+                <div className="-mx-5 border-b border-border" />
               </div>
             </div>
           </div>

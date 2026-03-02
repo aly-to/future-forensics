@@ -35,15 +35,15 @@ export default function ProductPage() {
         </div>
       )}
 
-      <div className="max-w-6xl mx-auto px-8 py-12 lg:py-16">
+      <div className="max-w-6xl mx-auto px-5 md:px-8 py-8 lg:py-16">
         {/* Breadcrumb */}
-        <div className="font-mono text-xs text-gray-400 mb-12">
+        <div className="font-mono text-xs text-gray-400 mb-6 md:mb-12">
           <Link to="/shop" className="hover:text-graphite hover:underline transition-colors">Shop</Link>
           <span className="mx-2">/</span>
           <span>{product.name}</span>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-start">
           {/* Image */}
           <div className="w-full lg:w-1/2 relative group">
             {product.productImage ? (
@@ -61,7 +61,7 @@ export default function ProductPage() {
           {/* Details */}
           <div className="w-full lg:w-1/2">
             <div className="font-light text-lg text-gray-400 mb-2" style={{ fontFamily: helvetica }}>{product.id.replace('FF-', '')}</div>
-            <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-3" style={{ fontFamily: helvetica }}>{product.name}</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-3" style={{ fontFamily: helvetica }}>{product.name}</h1>
             <h2 className="text-sm text-gray-400 mb-8 pb-6 border-b border-border-dim">{product.tagline}</h2>
 
             <div className="space-y-8">

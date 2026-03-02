@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 
 export default function ArchivePage() {
   return (
-    <div className="h-full w-full overflow-y-auto bg-bone flex flex-col items-center p-8">
-      <div className="max-w-2xl text-center space-y-8 py-16">
+    <div className="h-full w-full overflow-y-auto bg-bone flex flex-col items-center px-5 py-8 md:p-8">
+      <div className="max-w-2xl text-center space-y-6 md:space-y-8 py-8 md:py-16">
         <div className="w-48 mx-auto">
           <video autoPlay loop muted playsInline className="w-full h-auto">
             <source src="/ff-logo.mp4" type="video/mp4" />
