@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <header className="border-b border-border bg-bone z-50 shrink-0">
-      <div className="h-16 flex items-center justify-between px-6">
+      <div className="h-16 flex items-center justify-between px-3 md:px-8">
         <div className="flex items-center gap-8">
           <Link
             to="/"
