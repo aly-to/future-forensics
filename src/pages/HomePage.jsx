@@ -5,6 +5,17 @@ import { useCart } from '../context/CartContext'
 
 const fragrances = products.slice(0, 8)
 
+const mobileTaglines = {
+  'FF-01': 'Charged air.',
+  'FF-02': 'Earth reclaimed.',
+  'FF-03': 'Saltwater meets infrastructure.',
+  'FF-04': 'Concrete meets condensation.',
+  'FF-05': 'The fossil-fuel age, distilled.',
+  'FF-06': 'Synthetic warmth.',
+  'FF-07': 'Sweetness engineered for orbit.',
+  'FF-08': 'Human warmth, preserved.',
+}
+
 export default function HomePage() {
   const [searchParams] = useSearchParams()
   const location = useLocation()
@@ -185,7 +196,7 @@ export default function HomePage() {
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-medium tracking-wide">{p.name}</div>
                       <div className={`text-[10px] text-gray-400 mt-0.5 ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}>
-                        {p.tagline}
+                        {mobileTaglines[p.id] || p.tagline}
                       </div>
                     </div>
                     {p.swatch ? (
@@ -219,12 +230,14 @@ export default function HomePage() {
         {/* Mobile: index trigger bar */}
         <button
           onClick={() => setIndexOpen(true)}
-          className="md:hidden w-full py-3 border-b border-border bg-bone-light font-mono text-[10px] tracking-wider text-gray-400 uppercase flex items-center justify-center gap-2"
+          className="md:hidden w-full py-3 border-b border-border bg-bone-light flex items-center justify-between px-5"
         >
-          {scent.name} — Tap to browse
-          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
+          <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">
+            0{currentIndex + 1} / 08 — {scent.name}
+          </span>
+          <span className="font-mono text-[10px] tracking-wider text-graphite uppercase underline">
+            All Scents
+          </span>
         </button>
 
         {/* Desktop: Left Index (unchanged) */}
@@ -329,7 +342,10 @@ export default function HomePage() {
             <div className="w-full lg:w-1/2 p-5 md:p-8 lg:p-12">
               <div className="text-lg font-light text-gray-400 mb-2" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{scent.id.replace('FF-', '')}</div>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight mb-3" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{scent.name}</h1>
-              <h2 className="text-sm text-gray-400 pb-8">{scent.tagline}</h2>
+              <h2 className="text-sm text-gray-400 pb-8">
+                <span className="md:hidden">{mobileTaglines[scent.id] || scent.tagline}</span>
+                <span className="hidden md:inline">{scent.tagline}</span>
+              </h2>
               <div className="-mx-5 md:-mx-8 lg:-mx-12 border-b border-border" />
 
               <div className="pt-8 space-y-4">
